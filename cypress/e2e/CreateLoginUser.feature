@@ -26,13 +26,15 @@ Feature: Create a new user and log in and out with it
       | No Password | userName       |                | Please fill out Username and Password. |
       | Exist User  | bvknbkbbvknbkb | bvknbkbbvknbkb | User Does not exist.                   |
 
-  @only
-  Scenario Outline: Positive User login
+@only
+  Scenario Outline: Positive User log in and log out
     Given I am on the home page
     When Press Log in
     When Fill in "<user>" in Log in form
     And Submit the form by clicking Log in
-    Then Check if UserName is visible
+    And Check if UserName is visible
+    And Click on Log out
+    Then Check if UserName is invisible
     Examples:
       | user      |
       | ValidUser |

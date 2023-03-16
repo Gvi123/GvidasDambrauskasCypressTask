@@ -48,4 +48,12 @@ When(
 When(/^Fill in "([^"]*)" in Log in form$/, function (user) {
   CreateAndLogInUserPage.InputValidUser(user);
 });
-Then(/^Check if UserName is visible$/, function () {});
+Then(/^Check if UserName is visible$/, function () {
+  CreateAndLogInUserPage.checkUserName();
+});
+When(/^Click on Log out$/, function() {
+  CreateAndLogInUserPage.clickLogOutButton();
+});
+Then(/^Check if UserName is invisible$/, function() {
+  CreateAndLogInUserPage.checkUserNameInvisible();
+});

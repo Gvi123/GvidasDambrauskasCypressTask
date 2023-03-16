@@ -7,6 +7,8 @@ const SUBMIT_BUTTON = ".btn-primary";
 const LOG_IN_BUTTON = "#login2";
 const LOG_IN_USERNAME_FIELD = "#loginusername";
 const LOG_IN_PASSWORD_FIELD = "#loginpassword";
+const WELCOME_USER_NAME = '#nameofuser';
+const LOG_OUT_BUTTON = '#logout2'
 
 export class CreateAndLogInUserPage extends BaseCommands {
   static visitHomePage() {
@@ -63,12 +65,22 @@ export class CreateAndLogInUserPage extends BaseCommands {
 
   static InputValidUser(user) {
     cy.fixture("users").then((fixture) => {
-      if (fixture[user].UserName !== undefined) {
+      cy.wait(500);
         this.type(LOG_IN_USERNAME_FIELD, fixture[user].UserName);
-      }
-      if (fixture[user].Password !== undefined) {
+      cy.wait(500);
         this.type(LOG_IN_PASSWORD_FIELD, fixture[user].Password);
-      }
     });
+  }
+
+  static checkUserName() {
+        cy.get(WELCOME_USER_NAME).should("have.text", "Welcome labas");
+  }
+
+  static clickLogOutButton() {
+  cy.get(LOG_OUT_BUTTON).click()
+  }
+
+  static checkUserNameInvisible() {
+    cy.get(WELCOME_USER_NAME).should("have.value", "")
   }
 }

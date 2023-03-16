@@ -20,6 +20,7 @@ module.exports = defineConfig({
     specPattern: "**/*.feature",
     excludeSpecPattern: "*.js",
     baseUrl: "https://www.demoblaze.com/",
+    defaultCommandTimeout: 10000,
     viewportWidth: 1920,
     viewportHeight: 1080,
     reporter: "mochawesome",
