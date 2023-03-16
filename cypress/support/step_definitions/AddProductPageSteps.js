@@ -18,3 +18,15 @@ Given(/^User goes to the cart page$/, function() {
 Then(/^The last added item is visible in the cart$/, function() {
   AddProductPage.lastItemIsVisibleInTheCart();
 });
+Given(/^User clicks on the Laptops category$/, function() {
+  AddProductPage.laptopsCategory();
+});
+Given(/^User adds all laptops to the cart on the first page$/, function() {
+  AddProductPage.addAllItemsToTheCartonFirstPage();
+});
+Given(/^User goes to next page$/, function() {
+  AddProductPage.userGoesToNextPage();
+});
+Given(/^User adds all laptops to the cart on the next page$/, function() {
+  AddProductPage.addAllItemsToTheCartonNextPage();
+});

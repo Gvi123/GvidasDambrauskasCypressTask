@@ -1,3 +1,9 @@
+const ITEM_NAME = ".hrefch";
+const ADD_TO_CART_BUTTON = ".btn-lg";
+const SHOPPING_CART_PAGE = "#cartur";
+const LAPTOPS_CATEGORY = `[onclick="byCat('notebook')"]`;
+const NEXT_PAGE = "#next2"
+
 export class BaseCommands {
   static click(selector) {
     cy.get(selector).click();
@@ -25,5 +31,24 @@ export class BaseCommands {
 
   static doesNotExist(selector) {
     cy.get(selector).should("not.exist");
+  }
+
+  static addAllItems(number) {
+    cy.get(ITEM_NAME).eq(number).click();
+    cy.get(ADD_TO_CART_BUTTON).click();
+    cy.visit("/")
+    cy.get(LAPTOPS_CATEGORY).click();
+    cy.wait(500)
+  }
+  static addAllItemsInNextPage(number) {
+    cy.wait(2000)
+    cy.get('.active > .nav-link').click();
+    cy.wait(2000)
+    cy.get(LAPTOPS_CATEGORY).click();
+    cy.wait(2000)
+    cy.get(NEXT_PAGE).click()
+    cy.wait(2000)
+    cy.get(ITEM_NAME).eq(number).click();
+    cy.get(ADD_TO_CART_BUTTON).click();
   }
 }
