@@ -46,11 +46,11 @@ export class AddProductPage extends BaseCommands {
   }
 
   static addAllItemsToTheCartonFirstPage() {
-    cy.wait(2000)
+    // cy.wait(2000)
     cy.get('.active > .nav-link').click();
-    cy.wait(2000)
+    // cy.wait(2000)
     cy.get(LAPTOPS_CATEGORY).click();
-    cy.wait(2000)
+    // cy.wait(2000)
     cy.get(ITEM_NAME).should("have.length", 6);
     cy.get(ITEM_NAME).each(($el, index, $list) => {
       // Call the function for each element
@@ -60,24 +60,10 @@ export class AddProductPage extends BaseCommands {
 
   }
 
-  static userGoesToNextPage() {
-    cy.wait(2000)
-    cy.get('.active > .nav-link').click();
-    cy.wait(2000)
-    cy.get(LAPTOPS_CATEGORY).click();
-    cy.wait(2000)
-    cy.get(NEXT_PAGE).click()
-    cy.wait(2000)
-  }
-
   static addAllItemsToTheCartonNextPage() {
-    cy.wait(2000)
     cy.get('.active > .nav-link').click();
-    cy.wait(2000)
     cy.get(LAPTOPS_CATEGORY).click();
-    cy.wait(2000)
     cy.get(NEXT_PAGE).click()
-    cy.wait(2000)
     cy.get(ITEM_NAME).each(($el, index, $list) => {
       // Call the function for each element
       this.addAllItemsInNextPage(index)

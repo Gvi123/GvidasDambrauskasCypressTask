@@ -17,6 +17,7 @@ module.exports = defineConfig({
       return config;
     },
     chromeWebSecurity: false,
+    animationDistanceThreshold: 1,
     specPattern: "**/*.feature",
     excludeSpecPattern: "*.js",
     baseUrl: "https://www.demoblaze.com/",

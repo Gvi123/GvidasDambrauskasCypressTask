@@ -38,16 +38,14 @@ export class BaseCommands {
     cy.get(ADD_TO_CART_BUTTON).click();
     cy.visit("/")
     cy.get(LAPTOPS_CATEGORY).click();
-    cy.wait(500)
+    // cy.wait(500)
   }
   static addAllItemsInNextPage(number) {
-    cy.wait(2000)
     cy.get('.active > .nav-link').click();
-    cy.wait(2000)
     cy.get(LAPTOPS_CATEGORY).click();
-    cy.wait(2000)
+    cy.wait(500)
     cy.get(NEXT_PAGE).click()
-    cy.wait(2000)
+    cy.wait(500)
     cy.get(ITEM_NAME).eq(number).click();
     cy.get(ADD_TO_CART_BUTTON).click();
   }

@@ -65,9 +65,7 @@ export class CreateAndLogInUserPage extends BaseCommands {
 
   static InputValidUser(user) {
     cy.fixture("users").then((fixture) => {
-      cy.wait(500);
         this.type(LOG_IN_USERNAME_FIELD, fixture[user].UserName);
-      cy.wait(500);
         this.type(LOG_IN_PASSWORD_FIELD, fixture[user].Password);
     });
   }
