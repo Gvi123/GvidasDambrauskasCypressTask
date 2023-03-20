@@ -10,7 +10,11 @@ Feature: Products page test cases
 @only
   Scenario: Adding all available laptops to the cart, checking the total price and placing an order
     Given The user has logged
-#    And User adds all laptops to the cart on the first page
-#    And User adds all laptops to the cart on the next page
+    And User adds all laptops to the cart on the first page
+    And Checking if total price is correct
+  And User clicks Place Order button
+  And User fills Place Order form and clicks Purchase
+  Then Purchase completed
+
 
 

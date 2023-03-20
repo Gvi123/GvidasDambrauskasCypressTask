@@ -81,4 +81,5 @@ export class CreateAndLogInUserPage extends BaseCommands {
   static checkUserNameInvisible() {
     cy.get(WELCOME_USER_NAME).should("have.value", "")
   }
+
 }
