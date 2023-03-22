@@ -17,6 +17,7 @@ const PLACE_ORDER_CREDIT_CARD_FIELD = "#card";
 const PLACE_ORDER_MONTH_FIELD = "#month";
 const PLACE_ORDER_YEAR_FIELD = "#year";
 const SUCCESFUL_MESSAGE_AFTER_PURCHASE = ".sweet-alert > h2";
+const TOTAL_PRICE = "#totalp";
 
 export class AddProductPage extends BaseCommands {
 
@@ -81,7 +82,7 @@ export class AddProductPage extends BaseCommands {
           cy.log(numb);
         }
       }
-      cy.get("#totalp").should("have.text", numb);
+      cy.get(TOTAL_PRICE).should("have.text", numb);
     });
   }
 
