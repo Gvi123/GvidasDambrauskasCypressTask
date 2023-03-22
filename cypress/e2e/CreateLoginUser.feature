@@ -7,10 +7,10 @@ Feature: Create a new user and log in and out with it
     And Submit the form by clicking Sign up
     Then Pop up saying "<error>" is shown in Create user form
     Examples:
-      | test_name     | username        | password        | error                                  |
-      | No Username   |                 | password        | Please fill out Username and Password. |
-      | No Password   | userName        |                 | Please fill out Username and Password. |
-      | Existing User | labaslabaslabas | labaslabaslabas | This user already exist.               |
+      | test_name     | username | password | error                                  |
+      | No Username   |          | labas    | Please fill out Username and Password. |
+      | No Password   | labas    |          | Please fill out Username and Password. |
+      | Existing User | labas    | labas    | This user already exist.               |
 #      | New User    | newUserName | newPassword | Sign up successful.                    |
 
 
@@ -22,8 +22,8 @@ Feature: Create a new user and log in and out with it
     Then Pop up saying "<error>" is shown in Log in form
     Examples:
       | test_name     | username       | password       | error                                  |
-      | No Username   |                | password       | Please fill out Username and Password. |
-      | No Password   | userName       |                | Please fill out Username and Password. |
+      | No Username   |                | labas          | Please fill out Username and Password. |
+      | No Password   | labas          |                | Please fill out Username and Password. |
       | Existing User | bvknbkbbvknbkb | bvknbkbbvknbkb | User Does not exist.                   |
 
 

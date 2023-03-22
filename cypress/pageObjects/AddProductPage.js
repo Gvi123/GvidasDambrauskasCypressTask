@@ -5,18 +5,18 @@ const ADD_TO_CART_BUTTON = ".btn-lg";
 const SHOPPING_CART_PAGE = "#cartur";
 const SUBMIT_BUTTON = ".btn-primary";
 const MONITORS_CATEGORY = `[onclick="byCat('monitor')"]`;
-const NEXT_PAGE = "#next2"
-const ITEM_IN_SHOPPING_CART = ".success td"
-const EACH_ITEM_IN_SHOPPING_CART = ".table-striped td"
-const PLACE_ORDER_BUTTON = ".btn-success"
-const PLACE_OREDER_POP_UP = "#orderModalLabel"
-const PLACE_ORDER_NAME_FIELD = "#name"
-const PLACE_ORDER_COUNTRY_FIELD = "#country"
-const PLACE_ORDER_CITY_FIELD = "#city"
-const PLACE_ORDER_CREDIT_CARD_FIELD = "#card"
-const PLACE_ORDER_MONTH_FIELD = "#month"
-const PLACE_ORDER_YEAR_FIELD = "#year"
-const SUCCESFUL_MESSAGE_AFTER_PURCHASE = ".sweet-alert > h2"
+const NEXT_PAGE = "#next2";
+const ITEM_IN_SHOPPING_CART = ".success td";
+const EACH_ITEM_IN_SHOPPING_CART = ".table-striped td";
+const PLACE_ORDER_BUTTON = ".btn-success";
+const PLACE_OREDER_POP_UP = "#orderModalLabel";
+const PLACE_ORDER_NAME_FIELD = "#name";
+const PLACE_ORDER_COUNTRY_FIELD = "#country";
+const PLACE_ORDER_CITY_FIELD = "#city";
+const PLACE_ORDER_CREDIT_CARD_FIELD = "#card";
+const PLACE_ORDER_MONTH_FIELD = "#month";
+const PLACE_ORDER_YEAR_FIELD = "#year";
+const SUCCESFUL_MESSAGE_AFTER_PURCHASE = ".sweet-alert > h2";
 
 export class AddProductPage extends BaseCommands {
 
@@ -62,40 +62,27 @@ export class AddProductPage extends BaseCommands {
     cy.get(ITEM_NAME).should("have.length", 2);
     cy.get(ITEM_NAME).each(($el, index, $list) => {
       // Call the function for each element
-      this.addAllItems(index)
-    })
+      this.addAllItems(index);
+    });
   }
 
-  // static validateTotalPrice() {
-  //   this.userGoesToCart()
-  //   cy.wait(2000)
-  //   let prices = [];
-  //   cy.get(EACH_ITEM_IN_SHOPPING_CART).each(() => {
-  //     cy.get(ITEM_IN_SHOPPING_CART).eq(2)
-  //       .then(($el) => {
-  //         prices.push(parseInt($el.text()));
-  //       });
-  // })
-  //   console.log(prices)
-  // }
-
   static validateTotalPrice() {
-    this.userGoesToCart()
-    cy.wait(2000)
+    this.userGoesToCart();
+    cy.wait(2000);
     let prices = [];
     let numb = 0;
     cy.get(EACH_ITEM_IN_SHOPPING_CART).each(($el, index, $list) => {
       prices[index] = $el.text();
-    }).then (() => {
+    }).then(() => {
       let i;
-      for(i = 1; i < prices.length; i++) {
-        if(Number(prices[i])) {
+      for (i = 1; i < prices.length; i++) {
+        if (Number(prices[i])) {
           numb += Number(prices[i]);
-          cy.log(numb)
+          cy.log(numb);
         }
       }
-      cy.get('#totalp').should("have.text", numb);
-    })
+      cy.get("#totalp").should("have.text", numb);
+    });
   }
 
   static clickPlaceOrderButton() {
@@ -104,16 +91,16 @@ export class AddProductPage extends BaseCommands {
   }
 
   static fillingUpPlaceOrderForm() {
-    this.type(PLACE_ORDER_NAME_FIELD, "labas")
-    this.type(PLACE_ORDER_COUNTRY_FIELD, "Lithuania")
-    this.type(PLACE_ORDER_CITY_FIELD, "Vilnius")
-    this.type(PLACE_ORDER_CREDIT_CARD_FIELD, "4444 1111 2222 3333")
-    this.type(PLACE_ORDER_MONTH_FIELD, "August")
-    this.type(PLACE_ORDER_YEAR_FIELD, "2023")
+    this.type(PLACE_ORDER_NAME_FIELD, "labas");
+    this.type(PLACE_ORDER_COUNTRY_FIELD, "Lithuania");
+    this.type(PLACE_ORDER_CITY_FIELD, "Vilnius");
+    this.type(PLACE_ORDER_CREDIT_CARD_FIELD, "4444 1111 2222 3333");
+    this.type(PLACE_ORDER_MONTH_FIELD, "August");
+    this.type(PLACE_ORDER_YEAR_FIELD, "2023");
     cy.get(SUBMIT_BUTTON).contains("Purchase").click();
   }
 
   static purchaseCompleted() {
-    this.hasText(SUCCESFUL_MESSAGE_AFTER_PURCHASE,"Thank you for your purchase!" )
+    this.hasText(SUCCESFUL_MESSAGE_AFTER_PURCHASE, "Thank you for your purchase!");
   }
 }
